@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { JerrySandBoxService } from './jerrySandBoxService';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'sandbox';
+    constructor(private jerryService: JerrySandBoxService){
+      this.jerryService.print();
+  }
+  jerryTest(){
+    console.log('Hello');
+  }
 }
