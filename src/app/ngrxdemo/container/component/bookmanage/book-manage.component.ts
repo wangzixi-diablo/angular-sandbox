@@ -48,6 +48,8 @@ export class BookManageComponent implements OnInit {
 
   jerrysearchEventHandler(bookName) {
     console.log('jerry try to search book with name:' + bookName);
-    this.store.dispatch(new bookManageAction.SearchAction(bookName));
+
+    // send another action
+    this.store.dispatch(new bookManageAction.JerrySearchAction(bookName));
   }
 }
