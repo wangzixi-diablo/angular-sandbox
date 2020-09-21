@@ -1,4 +1,6 @@
 <div class="container">
-    <app-search-input (searchEventEmitter)="searchEventHandler($event)"></app-search-input>
+    <app-search-input (searchEventEmitter)="searchEventHandler
+    ($event)" (jerrysearchEventEmitter)="jerrysearchEventHandler($event)">
+    </app-search-input>
     <app-book-list [bookList]="searchResult$ | async"></app-book-list>
   </div>

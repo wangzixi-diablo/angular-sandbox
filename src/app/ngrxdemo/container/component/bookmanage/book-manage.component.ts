@@ -45,4 +45,9 @@ export class BookManageComponent implements OnInit {
     console.log('try to search book with name:' + bookName);
     this.store.dispatch(new bookManageAction.SearchAction(bookName));
   }
+
+  jerrysearchEventHandler(bookName) {
+    console.log('jerry try to search book with name:' + bookName);
+    this.store.dispatch(new bookManageAction.SearchAction(bookName));
+  }
 }

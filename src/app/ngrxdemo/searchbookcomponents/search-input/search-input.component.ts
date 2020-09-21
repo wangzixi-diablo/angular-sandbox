@@ -13,6 +13,9 @@ export class SearchInputComponent implements OnInit {
   bookName: string;
   constructor() { }
 
+  @Output() jerrysearchEventEmitter = new EventEmitter<string>();
+  jerrybookName: string;
+
   ngOnInit() {
     // this.searchEventEmitter.emit('jerry');
   }
