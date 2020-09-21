@@ -17,6 +17,11 @@ export function reducer(state = initialState, action: bookManage.Actions): State
         ...state,
         list: action.payload
       };
+    case bookManage.JERRY_SEARCH_COMPLETE:
+        return {
+          ...state,
+          list: action.payload
+        };
 
     default:
       return { ...state };

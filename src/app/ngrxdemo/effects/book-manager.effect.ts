@@ -26,6 +26,23 @@ export class BookManageEffects {
     })
   );
 
+
+  @Effect()
+  searchBook$: Observable<Action> = this.actions$.pipe(
+    ofType(bookManage.JERRY_SEARCH), // 监听bookManager.SEARCH action?
+    debounceTime(300),
+    mergeMap((action: bookManage.JerrySearchAction) => {
+      const nextSearch$ = this.actions$.pipe(ofType(bookManage.SEARCH), skip(1));
+      return this.service.searchBooks(action.payload).pipe(
+        takeUntil(nextSearch$),
+        // If successful, dispatch success action with result
+        map((data: BookResult) => ({type: bookManage.JERRY_SEARCH_COMPLETE, payload: data.items})),
+        // If request fails, dispatch failed action
+        catchError(() => of({type: bookManage.JERRY_SEARCH_COMPLETE, payload: []}))
+      );
+    })
+  );
+
   constructor(private actions$: Actions, private service: BookManageService) {
       console.log('in BookManager Effect ctr');
   }
