@@ -1,0 +1,4 @@
+<div class="container">
+    <app-search-input (search)="search($event)"></app-search-input>
+    <app-book-list [bookList]="searchResult$ | async"></app-book-list>
+  </div>

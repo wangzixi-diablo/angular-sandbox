@@ -10,7 +10,17 @@ import { ExampleModule } from './ngrxdemo/ngrxdemo.module';
 import { CounterComponent } from './ngrxdemo/container/component/counter/counter.component';
 import { StoreModule } from '@ngrx/store';
 import { reducers } from './ngrxdemo/reducer';
-import { CommonModule } from '@angular/common';
+import { CommonModule, registerLocaleData } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import en from '@angular/common/locales/en';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from './app.effect';
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -21,10 +31,15 @@ import { CommonModule } from '@angular/common';
     AppRoutingModule,
     ExampleModule,
     CommonModule,
-    StoreModule.forRoot({})
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([AppEffects]),
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [{ provide: JerrySandBoxService },
-  { provide: GreetingService, useClass: EnglishGreetingService}],
+  { provide: GreetingService, useClass: EnglishGreetingService},
+  { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 import { Action } from '@ngrx/store';
 
-// 加-建-重置
+// 加-减-重置
 // 为数字增加的行为定义，相应的reducer/counter.reducer.ts文件会根据这个来做出判断
 export const INCREMENT = '[Counter] Increment';  // 这个是唯一的，不能写重复哦
 export const DECREMENT = '[Counter] Decrement';

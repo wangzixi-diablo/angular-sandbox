@@ -13,10 +13,11 @@ export class JerrySandBoxService{
     jerryintervalFunction(event: Event){
         console.log('event: ' + event.timeStamp );
         /*
-        returns an Observable that emits an infinite sequence of ascending integers, with a constant interval of time of your choosing between those emissions.*/
+        returns an Observable that emits an infinite sequence
+        of ascending integers, with a constant interval of time of your choosing between those emissions.*/
 
-        //const a = interval(1000);
-        //return a;
+        // const a = interval(1000);
+        // return a;
         // return event.timeStamp;
         return of(event.timeStamp);
     }
@@ -33,8 +34,6 @@ export class JerrySandBoxService{
               return state;
             }
     }
-
-    
     print2(){
         const store = createStore(this.counter);
         store.subscribe(() =>
@@ -62,7 +61,7 @@ export class JerrySandBoxService{
         const clicks: Observable<Event> = fromEvent(document, 'click');
 
         const result = clicks.pipe(this.jerryMap);
-        //result.subscribe(x => console.log(x));
+        // result.subscribe(x => console.log(x));
         result.subscribe(x => {
             console.log(x);
         });

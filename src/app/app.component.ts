@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'sandbox';
     constructor(private jerryService: JerrySandBoxService,
                 private englishGreet: GreetingService){
-      //this.jerryService.print();
+      // this.jerryService.print();
       this.jerryService.print2();
       console.log(this.englishGreet.greet('Jerry'));
   }

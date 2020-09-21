@@ -1,0 +1,14 @@
+<div class="card">
+  <div class="book-header">
+    <div>
+      <h4 class="title" [title]="title">{{title }}</h4>
+      <p class="des">{{subtitle }}</p>
+    </div>
+    <img class="content-img" *ngIf="thumbnail" [src]="thumbnail" alt="">
+  </div>
+  <div class="book-content">{{description }}</div>
+  <div class="book-footer">
+    <div class="title">作者：</div>
+    <p class="author">{{authors}}</p>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="container">
+  <ul nz-row>
+    <li nz-col nzSpan="8" class="book-item" *ngFor="let book of bookList">
+      <app-book-detail [book]="book"></app-book-detail>
+    </li>
+  </ul>
+</div>
