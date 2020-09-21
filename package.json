@@ -21,7 +21,8 @@
     "@angular/router": "~9.1.12",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
-    "zone.js": "~0.10.2"
+    "zone.js": "~0.10.2",
+    "redux": "3.6.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.901.12",
@@ -41,6 +42,9 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~3.8.3"
+    "typescript": "~3.8.3",
+    "@ngrx/effects": "~9.1.0",
+    "@ngrx/router-store": "~9.1.0",
+    "@ngrx/store": "~9.1.0"
   }
 }
