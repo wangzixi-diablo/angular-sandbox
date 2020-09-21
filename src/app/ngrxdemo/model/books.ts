@@ -9,7 +9,7 @@ export interface Book {
       description: string;
       averageRating: number;
       ratingsCount: number;
-      imageLinks: {
+      imageLinks?: {
         thumbnail: string;
         smallThumbnail: string;
       };
