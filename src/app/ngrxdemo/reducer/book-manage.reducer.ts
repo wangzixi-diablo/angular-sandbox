@@ -10,7 +10,8 @@ const initialState: State = {
 };
 
 export function reducer(state = initialState, action: bookManage.Actions): State {
-  switch (action.type) {
+    console.log('type: ' + action.type);
+    switch (action.type) {
     case bookManage.SEARCH_COMPLETE:
       return {
         ...state,

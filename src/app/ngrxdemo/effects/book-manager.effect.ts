@@ -11,8 +11,8 @@ import {BookResult} from '../model/books';
 @Injectable()
 export class BookManageEffects {
   @Effect()
-  searchBook$: Observable<Action> = this.actions$.pipe(
-    ofType(bookManage.SEARCH),
+  searchBookICanbeAnyName$: Observable<Action> = this.actions$.pipe(
+    ofType(bookManage.SEARCH), // 监听bookManager.SEARCH action?
     debounceTime(300),
     mergeMap((action: bookManage.SearchAction) => {
       const nextSearch$ = this.actions$.pipe(ofType(bookManage.SEARCH), skip(1));
@@ -27,5 +27,6 @@ export class BookManageEffects {
   );
 
   constructor(private actions$: Actions, private service: BookManageService) {
+      console.log('in BookManager Effect ctr');
   }
 }

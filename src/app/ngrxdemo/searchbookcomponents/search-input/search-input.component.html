@@ -1,7 +1,7 @@
 <div class="container">
   <p class="title">Search book using ngrx programming style</p>
   <nz-input-group [nzSuffix]="suffixIconSearch" class="search">
-    <input type="text" maxlength="40" nz-input placeholder="Input Book Name to search" [(ngModel)]="bookName" (keyup)="search.emit(bookName)"/>
+    <input type="text" maxlength="40" nz-input placeholder="Input Book Name to search" [(ngModel)]="bookName" (keyup)="searchEventEmitter.emit(bookName)"/>
   </nz-input-group>
   <ng-template #suffixIconSearch>
     <i nz-icon type="loading" nzTheme="outline" ></i>

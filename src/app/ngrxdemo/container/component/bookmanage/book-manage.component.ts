@@ -30,13 +30,18 @@ export class BookManageComponent implements OnInit {
     const a2 = fromExample.getCounterState;
     const a3 = fromExample.getBookManageState;
     const a4 = fromExample.getBookManageList;
+
+    // searchResult$ is consumed in html
+    /*
+    <app-book-list [bookList]="searchResult$ | async"></app-book-list>
+    */
     this.searchResult$ = this.store.select(a4);
   }
 
   ngOnInit() {
   }
 
-  search(bookName) {
+  searchEventHandler(bookName) {
     console.log('try to search book with name:' + bookName);
     this.store.dispatch(new bookManageAction.SearchAction(bookName));
   }
