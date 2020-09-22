@@ -11,6 +11,10 @@ import {BookResult, Book} from '../model/books';
 @Injectable()
 export class BookManageEffects {
 
+  constructor(private actions$: Actions, private service: BookManageService) {
+      console.log('in BookManager Effect ctr');
+  }
+
   BOOK: Book = {
         id: 'Jerry-Book',
         volumeInfo: {
@@ -39,14 +43,21 @@ export class BookManageEffects {
       );
     })
   );
-  jerryForMergeMap(action: bookManage.JerrySearchAction){
-    return of([]);
-  }
 
+  // tslint:disable-next-line: member-ordering
+
+  // tslint:disable-next-line: member-ordering
+  jerryFilter = ofType(bookManage.JERRY_SEARCH);
+
+  jerryFilter2(){
+    console.log('in JerryFilter2');
+    return this.jerryFilter;
+  }
   // tslint:disable-next-line: member-ordering
   @Effect()
   searchBook$: Observable<Action> = this.actions$.pipe(
-    ofType(bookManage.JERRY_SEARCH), // 监听bookManager.SEARCH action?
+    // ofType(bookManage.JERRY_SEARCH), // 监听bookManager.SEARCH action?
+    this.jerryFilter2(),
     debounceTime(300),
     switchMap(() => of(new bookManage.JerrySearchCompleteAction([this.BOOK]))
     /*
@@ -61,8 +72,7 @@ export class BookManageEffects {
       );
     })*/
   ));
-
-  constructor(private actions$: Actions, private service: BookManageService) {
-      console.log('in BookManager Effect ctr');
+  jerryForMergeMap(action: bookManage.JerrySearchAction){
+    return of([]);
   }
 }
