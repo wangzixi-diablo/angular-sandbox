@@ -52,6 +52,7 @@ export class BookManageEffects {
   jerryFilter2(){
     console.log('in JerryFilter2');
     return this.jerryFilter;
+    
   }
   // tslint:disable-next-line: member-ordering
   @Effect()
