@@ -22,4 +22,10 @@ describe('SearchInputComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have <p> with "Search book', () => {
+    const bannerElement: HTMLElement = fixture.nativeElement;
+    const p = bannerElement.querySelector('p');
+    expect(p.textContent).toContain('Search book');
+  });
 });

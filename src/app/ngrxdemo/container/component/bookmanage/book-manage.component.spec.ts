@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { BookManageComponent } from './book-manage.component';
 
+/*
 describe('BookManageComponent', () => {
   let component: BookManageComponent;
   let fixture: ComponentFixture<BookManageComponent>;
@@ -23,3 +24,4 @@ describe('BookManageComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+*/
