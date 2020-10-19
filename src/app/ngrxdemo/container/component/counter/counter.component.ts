@@ -11,6 +11,8 @@ import { Component } from '@angular/core';
 })
 export class CounterComponent {
   counter$: Observable<number>;
+  name$: Observable<string>;
+  currentID = 999;
 
   // this Store is ngrx's standard data type
   // type parameter: application's own state
@@ -22,11 +24,20 @@ export class CounterComponent {
     // select<K>(mapFn: (state: T) => K): Observable<K>;
     console.log('in CounterComponent constructor');
     this.counter$ = store.select(fromExample.getCounterCounter);
+
+    // 2020-10-13 5:31PM 新学的
+    this.counter$.subscribe((data) => this.currentID = data).unsubscribe();
+    console.log('current ID: ' + this.currentID);
+    this.name$ = store.select(fromExample.jerryGetNameSelector);
   }
 
   increment() {
     console.log('in CounterComponent increment');
     this.store.dispatch(new counterAction.IncrementAction());
+  }
+
+  concat() {
+    this.store.dispatch(new counterAction.ConcatAction());
   }
 
   decrease(){

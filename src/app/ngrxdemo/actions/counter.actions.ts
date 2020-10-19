@@ -5,9 +5,15 @@ import { Action } from '@ngrx/store';
 export const INCREMENT = '[Counter] Increment';  // 这个是唯一的，不能写重复哦
 export const DECREMENT = '[Counter] Decrement';
 export const RESET = '[Counter] Reset';
+export const CONCAT = '[Name] Concat';
 
 export class IncrementAction implements Action {
   readonly type = INCREMENT;
+  constructor() { }
+}
+
+export class ConcatAction implements Action {
+  readonly type = CONCAT;
   constructor() { }
 }
 export class DecrementAction implements Action {
@@ -23,4 +29,4 @@ export class ResetAction implements Action {
 export type Actions
   = IncrementAction
   | DecrementAction
-  | ResetAction;
+  | ResetAction | ConcatAction;

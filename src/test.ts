@@ -21,5 +21,7 @@ getTestBed().initTestEnvironment(
 );
 // Then we find all the tests.
 const context = require.context('./', true, /\.spec\.ts$/);
-// And load the modules.
-context.keys().map(context);
+
+const FILE = ['./app/ngrxdemo/service/unittest-study/demo.spec.ts'];
+
+context.keys().filter( name => !!FILE.includes(name)).map(context);

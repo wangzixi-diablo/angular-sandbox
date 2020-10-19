@@ -36,6 +36,10 @@ export class BookManageComponent implements OnInit {
     <app-book-list [bookList]="searchResult$ | async"></app-book-list>
     */
     this.searchResult$ = this.store.select(a4);
+
+    this.searchResult$.subscribe((data) => {
+      console.log('data: ' + data);
+    });
   }
 
   ngOnInit() {

@@ -1,7 +1,7 @@
 import { MasterService, ValueService } from './master.service';
 import { TestBed } from '@angular/core/testing';
 
-/*
+
 function setup() {
     const valueServiceSpy =
       jasmine.createSpyObj('ValueService', ['getValue']);
@@ -26,7 +26,14 @@ describe('MasterService without Angular testing support', () => {
       });
 });
 
+describe('Jerry for Spartacus unit test', () => {
 
+  it('#getValue unit test here!', () => {
+    const valueService = new ValueService();
+    expect(valueService.getValue()).toEqual('Jerry');
+  });
+});
+/*
 describe('MasterService with Angular testing support', () => {
     let masterService: MasterService;
     it('#getValue should return stubbed value from a spy', () => {
@@ -102,5 +109,4 @@ describe('MasterService using setup Instead of beforeEach', () => {
           .toBe(stubValue);
       });
 });
-
 */

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Jerry Sandbox</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<script>
+  console.log("Jerry");
+  var scripts = document.querySelectorAll("script");
+  var old = document.createElement;
+  var _this = window.document;
+  document.createElement = function(input){
+    console.log("trying to create new tag: " + input);
+    return old.call(_this, input);
+  }
+</script>
+<body>
+  <app-root></app-root>
+</body>
+</html>

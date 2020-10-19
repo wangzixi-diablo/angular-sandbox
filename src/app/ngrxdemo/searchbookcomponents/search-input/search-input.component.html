@@ -1,14 +1,20 @@
 <div class="container">
   <p class="title">Search book using ngrx programming style</p>
+  
+  <!--
   <nz-input-group [nzSuffix]="suffixIconSearch" class="search">
-    <input type="text" maxlength="40" nz-input placeholder="Input Book Name to search" [(ngModel)]="bookName" (keyup)="searchEventEmitter.emit(bookName)"/>
+    -->
+    <input type="text" maxlength="40" nz-input placeholder="Input Book Name to search" [(ngModel)]="bookName" (keyup)="search(bookName)"
+    />
 
     <p>
     </p>
 
-    <input type="text" maxlength="40" nz-input placeholder="Jerry new button" [(ngModel)]="jerrybookName" (keyup)="jerrysearchEventEmitter.emit(jerrybookName)"/>
+    <!--
+    <input type="text" maxlength="40" nz-input placeholder="Jerry new button" [(ngModel)]="jerrybookName" (keyup)="jerrysearchEventEmitter.emit(jerrybookName)"/>-->
 
-  </nz-input-group>
+    <!--
+  </nz-input-group>-->
   <ng-template #suffixIconSearch>
     <i nz-icon type="loading" nzTheme="outline" ></i>
   </ng-template>

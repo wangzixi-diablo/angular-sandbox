@@ -51,10 +51,12 @@ export const getCounterState = createSelector(getExampleState, (state: State) =>
 */
 export const getCounterCounter = createSelector(getCounterState, fromCounter.getCounter);
 
+export const jerryGetNameSelector = createSelector(getCounterState, fromCounter.jerryGetName);
 
 // 图书管理
 export const getBookManageState = createSelector(getExampleState, (state: State) => state.bookManage);
 
 export const getBookManageList = createSelector(getBookManageState, fromBookManage.getList);
+
 
 console.log('index.ts end');

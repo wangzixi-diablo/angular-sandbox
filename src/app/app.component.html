@@ -1,4 +1,60 @@
-<h1>ngrx study</h1>
-<button id="jerry">Click Me</button>
+<!--
+<button id="jerry">Click Me</button>-->
 <!--
 <app-book-manage></app-book-manage>-->
+
+<!--
+<ng-template [ngIf]="hero">
+    <div class="name">Hello {{hero.name}}</div>
+</ng-template>
+-->
+<!--
+<div>
+    <ng-template #tpl2>
+      <span>鬼子到我想干什么</span>
+    </ng-template>
+    <div class= "I-am-container" #container_id></div>
+    <button (click)="showTpl()">显示template</button>
+  </div>
+-->
+<!--
+  <p *ngIf="true">
+    Expression is true and ngIf is true.
+    This paragraph is in the DOM.
+  </p>
+  <p *ngIf="false">
+    Expression is false and ngIf is false.
+    This paragraph is not in the DOM.
+  </p>
+
+  <p>Hip!</p>
+<ng-template>
+  <p>Hip!</p>
+</ng-template>
+<p>Hooray!</p>
+-->
+
+<!--
+<h2 id="appUnless">UnlessDirective</h2>
+<p>
+  The condition is currently
+  <span [ngClass]="{ 'a': !condition, 'b': condition, 'unless': true, 'fuck_false': false, 'fuck_true': true  }">{{condition}}</span>.
+  <button
+    (click)="condition = !condition"
+    [ngClass] = "{ 'a': condition, 'b': !condition }" >
+    Toggle condition to {{condition ? 'false' : 'true'}}
+  </button>
+</p>
+<p *appUnless="condition" class="unless a">
+  (A) This paragraph is displayed because the condition is false.
+</p>
+
+<p *appUnless="!condition" class="unless b">
+  (B) Although the condition is true,
+  this paragraph is displayed because appUnless is set to false.
+</p>
+-->
+<!--<app-template></app-template>
+
+<input id="jerry" (input)="downlog($event)"/>-->
+<app-book-manage></app-book-manage>
