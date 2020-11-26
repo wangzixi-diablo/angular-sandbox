@@ -23,7 +23,12 @@ export class CounterComponent {
     // output: number
     // select<K>(mapFn: (state: T) => K): Observable<K>;
     console.log('in CounterComponent constructor');
+
+    // 2020-11-05 3:36PM - 经过调试，最后发现，一旦对this.counter$调用
+    // subscribe，最终会触发fromExample.getCounterCounter, 后者
+    // 从当前最新的state里取数据
     this.counter$ = store.select(fromExample.getCounterCounter);
+
 
     // 2020-10-13 5:31PM 新学的
     this.counter$.subscribe((data) => this.currentID = data).unsubscribe();

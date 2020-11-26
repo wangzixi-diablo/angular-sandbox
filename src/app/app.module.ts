@@ -19,6 +19,7 @@ import { AppEffects } from './app.effect';
 import { UnlessDirective } from '../unless/unless.directive';
 import { RainbowDirective } from './color/color.directive';
 import { HERO_DI_CONFIG, APP_CONFIG } from './app.config';
+import { MyService, MyNewService } from './ngrxdemo/service/di-test';
 
 // 'http://localhost:4200/heros'
 
@@ -41,12 +42,14 @@ import { HERO_DI_CONFIG, APP_CONFIG } from './app.config';
     BrowserAnimationsModule
   ],
   providers: [{ provide: JerrySandBoxService },
-  { provide: GreetingService, useClass: EnglishGreetingService},
+  { provide: GreetingService,  useClass: EnglishGreetingService},
   {
     provide: 'apiUrl',
     useValue: 'http://localhost:4200/heros'
   },
-  { provide: APP_CONFIG, useValue: HERO_DI_CONFIG }
+  { provide: APP_CONFIG, useValue: HERO_DI_CONFIG },
+  MyNewService,
+  { provide: MyService, useExisting: MyNewService}
 ],
   bootstrap: [AppComponent]
 })

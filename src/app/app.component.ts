@@ -10,6 +10,7 @@ import { APP_CONFIG, AppConfig } from './app.config';
 import { build$ } from 'protractor/built/element';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
+import { MyService, MyNewService } from './ngrxdemo/service/di-test';
 
 interface Jerry {
   [uid: string]: {
@@ -33,11 +34,12 @@ export class AppComponent implements OnInit {
   @ViewChild('tpl2') ttTobeAdd: TemplateRef<void>;
   @ViewChild('container_id', { read: ViewContainerRef })
   jerryContainer: ViewContainerRef;
+  applicant: any;
   showTpl() {
     this.jerryContainer.createEmbeddedView(this.ttTobeAdd);
   }
 
-  constructor(private jerryService: JerrySandBoxService, private englishGreet: GreetingService, @Inject(APP_CONFIG) config: AppConfig) {
+  constructor( parameter1: MyService, parameter2: MyNewService) {
     this.test();
   }
 
@@ -47,37 +49,12 @@ export class AppComponent implements OnInit {
     return acc + value;
   }
 
+
   test(){
-    let testdata: Jerry = {};
-    testdata.uid1 = {};
-    const bulk1 = {
-      contentPage: of([1, 2, 3])
-    };
-
-    const bulk2 = {
-      footerPage: of([4, 5, 6])
-    };
-
-    const bulk3 = {
-      HeaderPage: of([7, 8, 9])
-    };
-    testdata.uid1 = { ...bulk1, ... bulk2};
-    testdata.uid2 = bulk3 ;
-
-    // how to copy bulk3 of uid2 to uid1??
-    testdata.uid1.HeaderPage = bulk3.HeaderPage;
-    Object.assign(testdata.uid2, bulk1);
-    console.log('data: ' + testdata);
+    const fun = () => ({ a , b } = { a: 1, b: 2}): number => 11;
   }
 
-  ngOnInit(): void {
-    // fromEvent(document, 'click')
-    //   .pipe(
-    //     // restart counter on every click
-    //     switchMap(() => interval(1000))
-    //   )
-    //   .subscribe((oe) => console.log('Jerry: ' + oe));
-  }
+  ngOnInit(): void {}
 
   jerryTest() {
     const button = document.querySelector('button');

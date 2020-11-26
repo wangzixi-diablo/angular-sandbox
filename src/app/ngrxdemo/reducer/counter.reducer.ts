@@ -41,8 +41,10 @@ export function reducer(state = initialState, action: counter.Actions): State {
   }
 }
 // 导出去
-export const getCounter = (state: State) => state.counter;
-
+export const getCounter = (state: State) => {
+  console.log('Jerry in counter.reducer.ts: ' + state );
+  return state.counter;
+}
 export const jerryGetName = (state: State) => {
   return state.name;
 };
