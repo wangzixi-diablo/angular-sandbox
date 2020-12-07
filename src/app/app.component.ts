@@ -2,7 +2,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { JerrySandBoxService } from './jerrySandBoxService';
 import { GreetingService } from './greeting.service';
 import { fromEvent, Observable, of, from, range, interval, asyncScheduler, concat, merge, OperatorFunction, timer, combineLatest } from 'rxjs';
-import { throttleTime, map, switchMap, take, mapTo, concatMap, concatMapTo, mergeScan, switchMapTo, delay, debounceTime, distinctUntilChanged, tap, takeWhile, withLatestFrom } from 'rxjs/operators';
 import { filter, scan } from 'rxjs/operators';
 
 import { ViewChild, TemplateRef, ViewContainerRef } from '@angular/core';
@@ -11,7 +10,9 @@ import { build$ } from 'protractor/built/element';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { MyService, MyNewService } from './ngrxdemo/service/di-test';
+import { HttpErrorHandler } from './ngrxdemo/service/unittest-study/abstract-test';
 
+import { TestClass } from './ngrxdemo/service/index';
 interface Jerry {
   [uid: string]: {
     [pageContext: string]: Observable<number[]>;
@@ -39,69 +40,21 @@ export class AppComponent implements OnInit {
     this.jerryContainer.createEmbeddedView(this.ttTobeAdd);
   }
 
-  constructor( parameter1: MyService, parameter2: MyNewService) {
-    this.test();
+  myFunc = (maybeString: string | undefined | null) => {
+  const onlyString: string = maybeString; // Error
+  const ignoreUndefinedAndNull: string = maybeString!; // Ok
   }
 
-  accumulator(acc: number, value: number, index: number): number {
-    console.log('in accumulator, acc: ' + acc + ' current value: ' + value
-      + ' index: ' + index);
-    return acc + value;
+  
+
+  myFunc2 = (onlyString: string) => {
+    const a: string = onlyString;
   }
-
-
-  test(){
-    const fun = () => ({ a , b } = { a: 1, b: 2}): number => 11;
+  constructor() {
+     new TestClass();
   }
 
   ngOnInit(): void {}
-
-  jerryTest() {
-    const button = document.querySelector('button');
-    fromEvent(button, 'click').pipe(map(event => (event as MouseEvent).x), scan((count, clientX) => count + clientX, 0))
-      .subscribe(count => console.log(`total sum of mouse event.x: ${count} `));
-  }
-
-  downlog(event){
-    console.log('jerry input value: ' + event.data);
-    const input = document.getElementById('jerry');
-    // console.log('access by dom api: ' + input.value);
-  }
-
-  toggle(event){
-    console.log('Jerry: ' + JSON.stringify(event));
-  }
-  jerrytest2() {
-    const ob = new Observable(function subscribe(observer) {
-      // 追踪 interval 资源
-      const intervalID = setInterval(() => {
-        observer.next('hi');
-      }, 1000);
-      // 提供取消和清理 interval 资源的方法
-      return function jerryunsubscribe() {
-        clearInterval(intervalID);
-      };
-    });
-
-    const jerry = ob.subscribe((x) => console.log(x));
-    jerry.unsubscribe();
-  }
-
-  jerry_custom_operator() {
-    // input has type observable
-    function multiplyByTen(input) {
-      return new Observable(function subscribe22anyname(observer) {
-        input.subscribe({
-          next: (v) => observer.next(10 * v),
-          error: (err) => observer.error(err),
-          complete: () => observer.complete()
-        });
-      });
-    }
-    const inpute = from([1, 2, 3, 4]);
-    const output = multiplyByTen(inpute);
-    output.subscribe(x => console.log(x));
-  }
 }
 
 @Component({
@@ -136,9 +89,5 @@ export class ViewComponent implements OnInit {
   constructor(public route: ActivatedRoute, private store: Store<any>) {}
 
   ngOnInit() {
-    this.route.paramMap.pipe(
-      switchMap(params => this.store.select(state => state.applicants.entities[params.get('id')])),
-      tap(applicant => this.applicant = applicant)
-    ).subscribe();
   }
 }

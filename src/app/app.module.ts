@@ -19,7 +19,8 @@ import { AppEffects } from './app.effect';
 import { UnlessDirective } from '../unless/unless.directive';
 import { RainbowDirective } from './color/color.directive';
 import { HERO_DI_CONFIG, APP_CONFIG } from './app.config';
-import { MyService, MyNewService } from './ngrxdemo/service/di-test';
+import { MyService, MyNewService, MyNewerService } from './ngrxdemo/service/di-test';
+import { HttpErrorHandler, UnKnownHandler, BadGatewayHandler } from './ngrxdemo/service/unittest-study/abstract-test';
 
 // 'http://localhost:4200/heros'
 
@@ -48,8 +49,13 @@ import { MyService, MyNewService } from './ngrxdemo/service/di-test';
     useValue: 'http://localhost:4200/heros'
   },
   { provide: APP_CONFIG, useValue: HERO_DI_CONFIG },
-  MyNewService,
-  { provide: MyService, useExisting: MyNewService}
+  //MyNewService,
+  { provide: MyService, useExisting: MyNewerService, multi: true},
+  { provide: MyService, useExisting: MyNewService, multi: true},
+  { provide: HttpErrorHandler, useExisting: UnKnownHandler,
+   multi: true},
+   { provide: HttpErrorHandler, useExisting: BadGatewayHandler,
+    multi: true}
 ],
   bootstrap: [AppComponent]
 })
