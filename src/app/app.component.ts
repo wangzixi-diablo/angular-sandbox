@@ -12,7 +12,6 @@ import { Store } from '@ngrx/store';
 import { MyService, MyNewService } from './ngrxdemo/service/di-test';
 import { HttpErrorHandler } from './ngrxdemo/service/unittest-study/abstract-test';
 
-import { TestClass } from './ngrxdemo/service/index';
 interface Jerry {
   [uid: string]: {
     [pageContext: string]: Observable<number[]>;
@@ -51,7 +50,7 @@ export class AppComponent implements OnInit {
     const a: string = onlyString;
   }
   constructor() {
-     new TestClass();
+
   }
 
   ngOnInit(): void {}
