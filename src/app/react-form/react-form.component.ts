@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { debounceTime } from "rxjs/operators";
+import { debounceTime, throttleTime } from "rxjs/operators";
 
 const APIENDPOINT = "http://localhost:3000/echo?data=";
 
@@ -42,9 +42,11 @@ export class ReactFormComponent implements OnInit  {
   }
 
   ngOnInit(): void {
-    this.favoriteColorControl.valueChanges.subscribe(this.onValueChanged);
+    //this.favoriteColorControl.valueChanges.subscribe(this.onValueChanged);
 
-    // this.favoriteColorControl.valueChanges.pipe(debounceTime(3000))
+    //this.favoriteColorControl.valueChanges.pipe(debounceTime(3000)).subscribe(this.onValueChanged);
+
+    this.favoriteColorControl.valueChanges.pipe(throttleTime(2000)).subscribe(this.onValueChanged);
   }
   favoriteColorControl = new FormControl('');
 }
