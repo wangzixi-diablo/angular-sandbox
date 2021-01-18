@@ -2,7 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
-import { AppComponent, NgTemplateOutletExampleComponent } from './app.component';
+import { AppComponent, FocusDirective } from './app.component';
 import { JerrySandBoxService } from './jerrySandBoxService';
 import { GreetingService } from './greeting.service';
 import { EnglishGreetingService } from './english.greeting.service';
@@ -21,6 +21,10 @@ import { RainbowDirective } from './color/color.directive';
 import { HERO_DI_CONFIG, APP_CONFIG } from './app.config';
 import { MyService, MyNewService, MyNewerService } from './ngrxdemo/service/di-test';
 import { HttpErrorHandler, UnKnownHandler, BadGatewayHandler } from './ngrxdemo/service/unittest-study/abstract-test';
+import { ReactFormComponent } from './react-form/react-form.component'
+
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 // 'http://localhost:4200/heros'
 
@@ -28,8 +32,9 @@ import { HttpErrorHandler, UnKnownHandler, BadGatewayHandler } from './ngrxdemo/
   declarations: [
     AppComponent,
     UnlessDirective,
-    NgTemplateOutletExampleComponent,
-    RainbowDirective
+    RainbowDirective,
+    ReactFormComponent,
+    FocusDirective
   ],
   imports: [
     BrowserModule,
@@ -40,8 +45,12 @@ import { HttpErrorHandler, UnKnownHandler, BadGatewayHandler } from './ngrxdemo/
     EffectsModule.forRoot([AppEffects]),
     //FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ReactiveFormsModule
   ],
+  exports:[FocusDirective],
+  
   providers: [{ provide: JerrySandBoxService },
   { provide: GreetingService,  useClass: EnglishGreetingService},
   {
