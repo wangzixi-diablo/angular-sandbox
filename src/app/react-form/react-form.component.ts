@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { debounceTime } from "rxjs/operators";
 
 const APIENDPOINT = "http://localhost:3000/echo?data=";
 
@@ -19,8 +19,11 @@ export class ReactFormComponent implements OnInit  {
 
   response = '';
 
-  ngOnInit(): void {
-
+  onValueChanged = (value)=>{
+    console.log('new value from live change: ' + value);
+    
+    const url = `${APIENDPOINT}${value}`;
+    
     const headers: HttpHeaders = new HttpHeaders({
       'Accept': 'text/html',
     });
@@ -29,19 +32,19 @@ export class ReactFormComponent implements OnInit  {
       headers: headers,
       responseType: 'text' as 'json'
     }
-    this.favoriteColorControl.valueChanges.subscribe(
-      (value) =>{
-        console.log('new value from live change: ' + value);
-        const url = `${APIENDPOINT}${value}` 
-        var $http = this.http.get(url, options);
-        
-        $http.subscribe(
-          (response:string)=>{
-            console.log('response from http: ' + response);
-            this.response = response},
-          (error)=>console.log('error: ' + error));
-      }
-    )
+
+    var $http = this.http.get(url, options);
+    $http.subscribe(
+      (response:string)=>{
+        console.log('response from http: ' + response);
+        this.response = response},
+      (error)=>console.log('error: ' + error));
+  }
+
+  ngOnInit(): void {
+    this.favoriteColorControl.valueChanges.subscribe(this.onValueChanged);
+
+    // this.favoriteColorControl.valueChanges.pipe(debounceTime(3000))
   }
   favoriteColorControl = new FormControl('');
 }
