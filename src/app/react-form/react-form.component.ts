@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient} from '@angular/common/http';
 import { debounceTime, throttleTime } from "rxjs/operators";
 
 const APIENDPOINT = "http://localhost:3000/echo?data=";
@@ -8,14 +8,12 @@ const APIENDPOINT = "http://localhost:3000/echo?data=";
 @Component({
   selector: 'jerryform',
   template: `
-    <input type="text" [formControl]="favoriteColorControl">
+    <input type="text" [formControl]="jerryFormControl">
     <div>{{ response }}</div>
   `
 })
 export class ReactFormComponent implements OnInit  {
-
-  constructor(private http:HttpClient){
-  }
+  constructor(private http:HttpClient){}
 
   response = '';
 
@@ -24,12 +22,7 @@ export class ReactFormComponent implements OnInit  {
     
     const url = `${APIENDPOINT}${value}`;
     
-    const headers: HttpHeaders = new HttpHeaders({
-      'Accept': 'text/html',
-    });
-    
     const options = {
-      headers: headers,
       responseType: 'text' as 'json'
     }
 
@@ -42,11 +35,10 @@ export class ReactFormComponent implements OnInit  {
   }
 
   ngOnInit(): void {
-    //this.favoriteColorControl.valueChanges.subscribe(this.onValueChanged);
 
-    //this.favoriteColorControl.valueChanges.pipe(debounceTime(3000)).subscribe(this.onValueChanged);
+    // this.jerryFormControl.valueChanges.pipe(debounceTime(3000)).subscribe(this.onValueChanged);
 
-    this.favoriteColorControl.valueChanges.pipe(throttleTime(2000)).subscribe(this.onValueChanged);
+    this.jerryFormControl.valueChanges.pipe(throttleTime(2000)).subscribe(this.onValueChanged);
   }
-  favoriteColorControl = new FormControl('');
+  jerryFormControl = new FormControl('');
 }
