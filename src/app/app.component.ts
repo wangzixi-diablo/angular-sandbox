@@ -8,6 +8,7 @@ import {
   SimpleChanges
 } from "@angular/core";
 
+
 interface jerryConfig {
   autofocus?: boolean;
   name?: string;
@@ -39,6 +40,7 @@ export class FocusDirective implements OnInit, OnChanges {
 @Component({
   selector: "app-root",
   template: `
+  <appparentchild></appparentchild>
   <jerryform></jerryform>
   `
 })
