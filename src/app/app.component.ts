@@ -7,6 +7,8 @@ import {
   OnInit,
   SimpleChanges
 } from "@angular/core";
+import { Router, ActivationStart } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 
 interface jerryConfig {
@@ -16,34 +18,51 @@ interface jerryConfig {
 }
 
 @Directive({
-  selector: "[cxFocus]"
+  selector: "[cxFocuses]"
 })
-export class FocusDirective implements OnInit, OnChanges {
-  @Input("cxFocus") public config: jerryConfig;
+export class FocusDirective implements OnInit
+//, 
+//OnChanges 
+{
+  //@Input("cxFocus") public config: jerryConfig;
 
-  @Input() set cxRefreshFocusOn(_switchCondition: string) {
+  /*@Input() set cxRefreshFocusOn(_switchCondition: string) {
     console.log("Jerry new value: " + _switchCondition);
-  }
+  }*/
 
   constructor() {
     console.log("Jerry directive constructor");
   }
-  ngOnChanges(changes: SimpleChanges): void {
+  /*ngOnChanges(changes: SimpleChanges): void {
     debugger;
-  }
+  }*/
 
   ngOnInit(): void {
-    console.log("Jerry directive in ngOnInit: " + this.config);
+    console.log("Jerry directive in ngOnInit: "
+    // + this.config
+    );
   }
 }
 
+/*
+<div cxFocuses>Painful</div>
+*/
 @Component({
   selector: "app-root",
-  template: `
-  <appparentchild></appparentchild>
-  <jerryform></jerryform>
+  template: `  
+  <a href="/custom/1">Click me</a>
+  <div class="container">
+  <router-outlet></router-outlet>
+  </div>
   `
 })
 export class AppComponent {
-
+  constructor(router:Router){
+    console.log('Checking router');
+    router.events.pipe(
+      filter(e => e instanceof ActivationStart)
+    ).subscribe(e =>{
+        console.log('路由开始了', e);
+    })
+  }
 }
