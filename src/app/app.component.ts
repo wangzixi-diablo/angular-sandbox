@@ -49,20 +49,24 @@ export class FocusDirective implements OnInit
 */
 @Component({
   selector: "app-root",
+  /*
   template: `  
   <a href="/custom/1">Click me</a>
+  <p></p>
+  <a [routerLink]="['/fuck', '1']">RouterTest</a>
   <div class="container">
   <router-outlet></router-outlet>
-  </div>
+  </div>*/
+  template: `
+  <app-ngrx-demo></app-ngrx-demo>
   `
 })
 export class AppComponent {
   constructor(router:Router){
-    console.log('Checking router');
     router.events.pipe(
       filter(e => e instanceof ActivationStart)
     ).subscribe(e =>{
-        console.log('路由开始了', e);
-    })
+        // console.log('路由开始了', e);
+    });
   }
 }

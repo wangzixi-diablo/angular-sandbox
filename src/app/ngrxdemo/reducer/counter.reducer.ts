@@ -40,7 +40,7 @@ export function reducer(state = initialState, action: counter.Actions): State {
       return { ...state };
   }
 }
-// 导出去
+// 导出去, projection函数
 export const getCounter = (state: State) => {
   console.log('Jerry in counter.reducer.ts: ' + state );
   return state.counter;
