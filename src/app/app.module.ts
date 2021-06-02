@@ -25,7 +25,6 @@ import { ReactFormComponent } from './react-form/react-form.component'
 import { ReactiveFormsModule } from '@angular/forms';
 import { ParentModule } from 'src/parent-child/parent.module';
 import { ParentChildComponent } from 'src/parent-child/parent-child.component';
-import { DirectiveStudyComponent } from './directive-study/directive-study.component';
 import { RouteStudyModule } from './route-study/route-study.module';
 import { RouterModule, Routes } from '@angular/router';
 import { RouteDemoComponent } from './route-study/route-demo/route-demo.component';
@@ -56,7 +55,6 @@ const CUSTOM_ROUTES: Routes = [
     UnlessDirective,
     ReactFormComponent,
     FocusDirective,
-    DirectiveStudyComponent
   ],
   imports: [
     BrowserModule,
