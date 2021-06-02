@@ -20,9 +20,7 @@ import { RainbowDirective } from './color/color.directive';
 import { HERO_DI_CONFIG, APP_CONFIG } from './app.config';
 import { MyService, MyNewService, MyNewerService } from './ngrxdemo/service/di-test';
 import { HttpErrorHandler, UnKnownHandler, BadGatewayHandler } from './ngrxdemo/service/unittest-study/abstract-test';
-import { ReactFormComponent } from './react-form/react-form.component'
 
-import { ReactiveFormsModule } from '@angular/forms';
 import { ParentModule } from 'src/parent-child/parent.module';
 import { ParentChildComponent } from 'src/parent-child/parent-child.component';
 import { RouteStudyModule } from './route-study/route-study.module';
@@ -32,6 +30,7 @@ import { CanActivateTeam, UserToken, JerryPermissions } from './route-study/rout
 import { HeroResolver } from './route-study/route-demo/resolve-guard';
 import { WildComponent } from './route-study/route-demo/wild.component';
 import { ColorModule } from './color/color.module';
+import { JerryReactFormModule } from './react-form/react-form.module';
 
 const CUSTOM_ROUTES: Routes = [
   { path: "custom/:id", 
@@ -53,7 +52,6 @@ const CUSTOM_ROUTES: Routes = [
   declarations: [
     AppComponent,
     UnlessDirective,
-    ReactFormComponent,
     FocusDirective,
   ],
   imports: [
@@ -67,7 +65,7 @@ const CUSTOM_ROUTES: Routes = [
     HttpClientModule,
     FormsModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule,
+    JerryReactFormModule,
     RouterModule.forRoot(CUSTOM_ROUTES),
     RouterModule,
     ColorModule

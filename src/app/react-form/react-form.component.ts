@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { HttpClient} from '@angular/common/http';
-import { debounceTime, throttleTime } from "rxjs/operators";
+import { throttleTime } from "rxjs/operators";
+
+// this endpoint is implemented in https://github.com/wangzixi-diablo/ui5-toolset, local.js
 
 const APIENDPOINT = "http://localhost:3000/echo?data=";
 
 @Component({
   selector: 'jerryform',
-  template: `
-    <input type="text" [formControl]="jerryFormControl">
-    <div>{{ response }}</div>
-  `
+  templateUrl: './react-form.component.html'
 })
-export class ReactFormComponent implements OnInit  {
+export class JerryReactFormComponent implements OnInit  {
   constructor(private http:HttpClient){}
 
   response = '';
