@@ -8,7 +8,7 @@ import { EnglishGreetingService } from './english.greeting.service';
 import { ExampleModule } from './ngrxdemo/ngrxdemo.module';
 
 import { StoreModule } from '@ngrx/store';
-import { CommonModule, registerLocaleData } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,9 +16,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effect';
 
 import { UnlessDirective } from '../unless/unless.directive';
-import { RainbowDirective } from './color/color.directive';
 import { HERO_DI_CONFIG, APP_CONFIG } from './app.config';
-import { MyService, MyNewService, MyNewerService } from './ngrxdemo/service/di-test';
+
 import { HttpErrorHandler, UnKnownHandler, BadGatewayHandler } from './ngrxdemo/service/unittest-study/abstract-test';
 
 import { ParentModule } from 'src/parent-child/parent.module';
@@ -31,6 +30,7 @@ import { HeroResolver } from './route-study/route-demo/resolve-guard';
 import { WildComponent } from './route-study/route-demo/wild.component';
 import { ColorModule } from './color/color.module';
 import { JerryReactFormModule } from './react-form/react-form.module';
+import { DitestModule } from './ditest/ditest.module';
 
 const CUSTOM_ROUTES: Routes = [
   { path: "custom/:id", 
@@ -68,7 +68,8 @@ const CUSTOM_ROUTES: Routes = [
     JerryReactFormModule,
     RouterModule.forRoot(CUSTOM_ROUTES),
     RouterModule,
-    ColorModule
+    ColorModule,
+    DitestModule,
   ],
   exports:[FocusDirective],
   
@@ -79,9 +80,7 @@ const CUSTOM_ROUTES: Routes = [
     useValue: 'http://localhost:4200/heros'
   },
   { provide: APP_CONFIG, useValue: HERO_DI_CONFIG },
-  //MyNewService,
-  { provide: MyService, useExisting: MyNewerService, multi: true},
-  { provide: MyService, useExisting: MyNewService, multi: true},
+  
   { provide: HttpErrorHandler, useExisting: UnKnownHandler,
    multi: true},
    { provide: HttpErrorHandler, useExisting: BadGatewayHandler,
