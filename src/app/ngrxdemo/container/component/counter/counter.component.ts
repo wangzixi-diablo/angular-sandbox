@@ -4,10 +4,8 @@ import { Observable } from 'rxjs';
 import * as counterAction from '../../../actions/counter.actions';
 import { Component } from '@angular/core';
 import { selectTotal }  from './selector';
-import { dummy } from './selector-type';
 
 console.log(selectTotal);
-console.log(dummy);
 
 @Component({
   selector: 'app-ngrx-demo',

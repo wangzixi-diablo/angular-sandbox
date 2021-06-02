@@ -5,11 +5,27 @@ import {
   Input,
   OnChanges,
   OnInit,
-  SimpleChanges
+  SimpleChanges,
+  Injectable,
+  Injector
 } from "@angular/core";
 import { Router, ActivationStart } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
+@Injectable()
+class UsefulService {
+}
+
+@Injectable()
+class NeedsService {
+  constructor(public service: UsefulService) { }
+}
+
+const injector = Injector.create({
+  providers:
+    [{ provide: NeedsService, deps: [UsefulService] }, { provide: UsefulService, deps: [] }]
+});
+console.log(' true or false?' , injector.get(NeedsService).service instanceof UsefulService);
 
 interface jerryConfig {
   autofocus?: boolean;
@@ -58,10 +74,12 @@ export class FocusDirective implements OnInit
   <router-outlet></router-outlet>
   </div>*/
   template: `
-  <app-ngrx-demo></app-ngrx-demo>
+  <h2 *ngIf= "jerry === '1'">Hello</h2>
   `
 })
 export class AppComponent {
+  public jerry = '1';
+
   constructor(router:Router){
     router.events.pipe(
       filter(e => e instanceof ActivationStart)
