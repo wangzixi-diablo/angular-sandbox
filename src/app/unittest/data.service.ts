@@ -5,7 +5,7 @@ import { HttpClient, HttpRequest } from '@angular/common/http';
 export class DataService {
   url = 'https://jsonplaceholder.typicode.com/users';
   constructor(private http: HttpClient) {}
-  getData() {
+  getData(){
     const req = new HttpRequest('GET', this.url, {
       reportProgress: true
     });

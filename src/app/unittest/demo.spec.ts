@@ -29,13 +29,13 @@ describe('DataService', () => {
       }
     });
 
-        const mockReq = httpMock.expectOne(dataService.url);
+    const mockReq = httpMock.expectOne(dataService.url);
 
-        expect(mockReq.cancelled).toBeFalsy();
-        expect(mockReq.request.responseType).toEqual('json');
-        mockReq.flush(mockUsers);
+    expect(mockReq.cancelled).toBeFalsy();
+    expect(mockReq.request.responseType).toEqual('json');
+    mockReq.flush(mockUsers);
 
-        httpMock.verify();
+    httpMock.verify();
   }
 )); } );
 

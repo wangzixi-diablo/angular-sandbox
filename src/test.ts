@@ -22,6 +22,6 @@ getTestBed().initTestEnvironment(
 // Then we find all the tests.
 const context = require.context('./', true, /\.spec\.ts$/);
 
-const FILE = ['./app/ngrxdemo/service/unittest-study/demo.spec.ts'];
+const FILE = ['./app/unittest/demo.spec.ts'];
 
 context.keys().filter( name => !!FILE.includes(name)).map(context);
