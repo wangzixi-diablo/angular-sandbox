@@ -19,3 +19,6 @@ bootstrap: [AppComponent]
 
 AppComponent location: src\app\app.component.ts
 
+## Unit test
+
+See sub folder unittest in app folder.
