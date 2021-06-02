@@ -65,17 +65,7 @@ export class FocusDirective implements OnInit
 */
 @Component({
   selector: "app-root",
-  /*
-  template: `  
-  <a href="/custom/1">Click me</a>
-  <p></p>
-  <a [routerLink]="['/fuck', '1']">RouterTest</a>
-  <div class="container">
-  <router-outlet></router-outlet>
-  </div>*/
-  template: `
-  <h2 *ngIf= "jerry === '1'">Hello</h2>
-  `
+  templateUrl: './app.component.html'
 })
 export class AppComponent {
   public jerry = '1';

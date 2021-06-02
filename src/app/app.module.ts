@@ -32,6 +32,7 @@ import { RouteDemoComponent } from './route-study/route-demo/route-demo.componen
 import { CanActivateTeam, UserToken, JerryPermissions } from './route-study/route-demo/activate-guard';
 import { HeroResolver } from './route-study/route-demo/resolve-guard';
 import { WildComponent } from './route-study/route-demo/wild.component';
+import { ColorModule } from './color/color.module';
 
 const CUSTOM_ROUTES: Routes = [
   { path: "custom/:id", 
@@ -53,7 +54,6 @@ const CUSTOM_ROUTES: Routes = [
   declarations: [
     AppComponent,
     UnlessDirective,
-    RainbowDirective,
     ReactFormComponent,
     FocusDirective,
     DirectiveStudyComponent
@@ -71,7 +71,8 @@ const CUSTOM_ROUTES: Routes = [
     BrowserAnimationsModule,
     ReactiveFormsModule,
     RouterModule.forRoot(CUSTOM_ROUTES),
-    RouterModule
+    RouterModule,
+    ColorModule
   ],
   exports:[FocusDirective],
   
