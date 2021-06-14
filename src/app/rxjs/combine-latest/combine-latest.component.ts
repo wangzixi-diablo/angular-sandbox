@@ -27,12 +27,18 @@ export class CombineLatestComponent implements OnInit {
     this.total = this.document.getElementById('total');
     this.test = this.document.getElementById('test');
 
-    combineLatest(this.addOneClick$('red'), 
+    /*combineLatest(this.addOneClick$('red'), 
     
     this.addOneClick$('black')).subscribe(([red, black]: any) => {
       this.redTotal.innerHTML = red;
       this.blackTotal.innerHTML = black;
       this.total.innerHTML = red + black;
+    });*/
+
+    combineLatest([this.addOneClick$('red'), this.addOneClick$('black')]).subscribe((values) => {
+      this.redTotal.innerHTML = `${values[0]}`;
+      this.blackTotal.innerHTML = `${values[1]}`;
+      this.total.innerHTML = values[0] + values[1] + "";
     });
 
     fromEvent(this.test, 'click').pipe(map( event => event.timeStamp), mapTo(1)).subscribe((event) => console.log(event));
