@@ -27,6 +27,8 @@ import { ColorModule } from './color/color.module';
 import { JerryReactFormModule } from './react-form/react-form.module';
 import { DitestModule } from './ditest/ditest.module';
 import { CombineLatestComponent } from './rxjs/combine-latest/combine-latest.component';
+import { RsJSModule } from './rxjs/rxjs.module';
+import { SwitchMapComponent } from './rxjs/switchMap/switchMap.component';
 
 const CUSTOM_ROUTES: Routes = [
   { path: "custom/:id", 
@@ -47,8 +49,7 @@ const CUSTOM_ROUTES: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    UnlessDirective,
-    CombineLatestComponent
+    UnlessDirective
   ],
   imports: [
     BrowserModule,
@@ -65,6 +66,7 @@ const CUSTOM_ROUTES: Routes = [
     RouterModule,
     ColorModule,
     DitestModule,
+    RsJSModule
   ],
   
   providers: [{ provide: JerrySandBoxService },
