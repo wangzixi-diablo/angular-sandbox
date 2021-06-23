@@ -29,6 +29,7 @@ import { DitestModule } from './ditest/ditest.module';
 import { CombineLatestComponent } from './rxjs/combine-latest/combine-latest.component';
 import { RsJSModule } from './rxjs/rxjs.module';
 import { SwitchMapComponent } from './rxjs/switchMap/switchMap.component';
+import { FunctionModule } from './function/function.module';
 
 const CUSTOM_ROUTES: Routes = [
   { path: "custom/:id", 
@@ -66,7 +67,8 @@ const CUSTOM_ROUTES: Routes = [
     RouterModule,
     ColorModule,
     DitestModule,
-    RsJSModule
+    RsJSModule,
+    FunctionModule,
   ],
   
   providers: [{ provide: JerrySandBoxService },
