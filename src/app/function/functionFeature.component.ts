@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { Point } from './point';
+import { Point, MyFunc } from './point';
+import { MyDate } from './myDate';
+
+import { CONSTRUCT_SIGNATURE} from './construct-signature';
+
+console.log(CONSTRUCT_SIGNATURE);
 
 declare type ee = {
     name: string;
@@ -24,24 +29,32 @@ function doSomething(fn: DescribableFunction) {
     console.log(fn.description + " returned " + fn(6));
 }
 
-const fn = (a: number) => a > 10;
+/*const fn = (a: number) => a > 10;
 
 fn.description = 'Jerry';
+*/
 
-// Construct Signatures
+const fn = <DescribableFunction>({
+   description: 'Jerry'
+});
 
-type SomeObject = any;
+const fn23 = Object.assign(
+  function (number:number) { return number > 1 },
+  fn
+);
 
-type SomeConstructor = {
-    new (s: string): SomeObject;
-  };
+// two kinds summary
 
-// how to call ??
+let composite: MyFunc = <MyFunc>({
+  funcName: (name) => name
+});
 
-function fn2(ctor: SomeConstructor) {
-    return new ctor("hello");
-}
+composite = Object.assign(
+  function (name:string) { return name },
+  composite
+);
 
+console.log(composite('composite'));
 // Using the call signature
 const digitsPattern1 = RegExp("^\\d+$");
 
@@ -55,13 +68,19 @@ interface ActionReducer<T, V extends Point = Point> {
   (state: T | undefined, action: V): T;
 }
 
+const myDate = <MyDate>({
+  toString: () => 'Jerry',
+  setTime: (number) => number + 1
+});
+
+
 @Component({
     selector: 'app-function',
     templateUrl: './functionFeature.component.html'
   })
   export class FunctionComponent implements OnInit {
     ngOnInit(): void {
-        doSomething(fn);
+        doSomething(fn23);
         this.testActionReducer();
     }
 
@@ -70,5 +89,7 @@ interface ActionReducer<T, V extends Point = Point> {
 
       // 打印 Jerry2
       console.log(myActionReducer('Jerry', { x: 1, y: 2}));
+
+      console.log(myDate.toString(), myDate.setTime(12));
     }
   }
