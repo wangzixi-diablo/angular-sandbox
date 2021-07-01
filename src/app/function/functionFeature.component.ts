@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Point, MyFunc } from './point';
-import { MyDate } from './myDate';
+import { MyDate, GeneralFunction } from './myDate';
 
 import { CONSTRUCT_SIGNATURE} from './construct-signature';
 
@@ -33,6 +33,19 @@ function doSomething(fn: DescribableFunction) {
 
 fn.description = 'Jerry';
 */
+
+const a1: GeneralFunction<string, number> = (a: string, b: number) => a + b;
+
+const a2: GeneralFunction<string, number> = (a, b) => a + b;
+
+const a3 = (a: string, b: number) => a + b;
+
+const a4 = <GeneralFunction<string, number>>((a:string,b:number) => a + b);
+
+console.log(a1('Ethan', 1));
+console.log(a2('Ethan', 2));
+console.log(a3('Ethan', 3));
+console.log(a4('Ethan', 4));
 
 const fn = <DescribableFunction>({
    description: 'Jerry'

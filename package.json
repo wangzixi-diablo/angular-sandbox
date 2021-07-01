@@ -21,6 +21,7 @@
     "@angular/router": "~9.1.12",
     "ng-zorro-antd": "^9.3.0",
     "redux": "3.6.0",
+    "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
