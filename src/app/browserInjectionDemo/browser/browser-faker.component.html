@@ -6,9 +6,9 @@
       My browser
     </option>
 
-    <option *ngFor="let browser of browsers"
-      [value]="browser">
-      {{browser | replace:wordStartPattern:' $&' | trim}}
+    <option *ngFor="let fakebrowser of fakeBrowsers"
+      [value]="fakebrowser">
+      {{ fakebrowser | replace:wordStartPattern:' $&' | trim}}
     </option>
   </select>
 </label>

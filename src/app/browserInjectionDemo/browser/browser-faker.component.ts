@@ -1,10 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Observable, Subject } from 'rxjs';
-import { filter, takeUntil } from 'rxjs/operators';
+import { filter, takeUntil, tap } from 'rxjs/operators';
 
 import { BrowserService } from './browser.service';
 import { FakeUserAgent } from './fake-user-agent';
+import { userAgentToken } from './user-agent.token';
 
 @Component({
   host: { style: 'display: block;' },
@@ -17,7 +18,7 @@ export class BrowserFakerComponent implements OnDestroy, OnInit {
   private fakeBrowserSelection$: Observable<FakeUserAgent>;
   private realBrowserSelection$: Observable<void>;
 
-  browsers = Object.keys(FakeUserAgent);
+  fakeBrowsers = Object.keys(FakeUserAgent);
   selectedBrowser = new FormControl(this.defaultOptionValue);
   wordStartPattern = /[A-Z]|\d+/g;
 
@@ -25,11 +26,12 @@ export class BrowserFakerComponent implements OnDestroy, OnInit {
     private browser: BrowserService,
   ) {
     this.realBrowserSelection$ = this.selectedBrowser.valueChanges.pipe(
+      /*tap((value) => { console.log('valueChanges occurs: ', value); return value },*/
       filter(value => value === this.defaultOptionValue),
       takeUntil(this.destroy),
     );
     this.fakeBrowserSelection$ = this.selectedBrowser.valueChanges.pipe(
-      filter(value => value !== this.defaultOptionValue),
+      filter(value => { console.log('in filter, new value: ' , value ); return value !== this.defaultOptionValue}),
       takeUntil(this.destroy),
     );
   }
@@ -43,8 +45,11 @@ export class BrowserFakerComponent implements OnDestroy, OnInit {
   }
 
   private bindEvents(): void {
-    this.fakeBrowserSelection$.subscribe(userAgent =>
-      this.browser.fakeUserAgent(userAgent));
+    this.fakeBrowserSelection$.subscribe(userAgent =>{
+      this.browser.fakeUserAgent(userAgent);
+      console.log('notify fake user agent should be used: ',  userAgent);
+      }
+      );
     this.realBrowserSelection$.subscribe(() =>
       this.browser.stopFakingUserAgent());
   }
