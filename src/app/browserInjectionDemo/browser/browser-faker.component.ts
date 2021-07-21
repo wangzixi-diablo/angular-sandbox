@@ -26,7 +26,7 @@ export class BrowserFakerComponent implements OnDestroy, OnInit {
     private browser: BrowserService,
   ) {
     this.realBrowserSelection$ = this.selectedBrowser.valueChanges.pipe(
-      /*tap((value) => { console.log('valueChanges occurs: ', value); return value },*/
+      tap((value) => { console.log('valueChanges occurs: ', value); return value }),
       filter(value => value === this.defaultOptionValue),
       takeUntil(this.destroy),
     );
