@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RouteDemoComponent } from './route-demo/route-demo.component';
 import { Routes, RouterModule } from '@angular/router';
 
+
 const CUSTOM_ROUTES: Routes = [
   { path: '', component: RouteDemoComponent },
   { path: 'custom', component: RouteDemoComponent }
