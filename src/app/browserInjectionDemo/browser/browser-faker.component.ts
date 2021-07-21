@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable, Subject } from 'rxjs';
+import { Observable, Subject, MonoTypeOperatorFunction } from 'rxjs';
 import { filter, takeUntil, tap } from 'rxjs/operators';
 
 import { BrowserService } from './browser.service';
@@ -30,12 +30,14 @@ export class BrowserFakerComponent implements OnDestroy, OnInit {
       filter(value => value === this.defaultOptionValue),
       takeUntil(this.destroy),
     );
-    this.fakeBrowserSelection$ = this.selectedBrowser.valueChanges.pipe(
-      filter(value => { console.log('in filter, new value: ' , value ); return value !== this.defaultOptionValue}),
-      takeUntil(this.destroy),
-    );
-  }
 
+    let op1 = filter((value: FakeUserAgent) => { console.log('in filter, new value: ' , value ); return value !== this.defaultOptionValue});
+
+    let op2:MonoTypeOperatorFunction<FakeUserAgent> = takeUntil(this.destroy);
+
+    this.fakeBrowserSelection$ = this.selectedBrowser.valueChanges.pipe( op1, op2 );
+  }
+ 
   ngOnInit(): void {
     this.bindEvents();
   }
