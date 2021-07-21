@@ -30,6 +30,7 @@ import { CombineLatestComponent } from './rxjs/combine-latest/combine-latest.com
 import { RsJSModule } from './rxjs/rxjs.module';
 import { SwitchMapComponent } from './rxjs/switchMap/switchMap.component';
 import { FunctionModule } from './function/function.module';
+import { BrowserTestModule } from './browserInjectionDemo/browserTest.module';
 
 const CUSTOM_ROUTES: Routes = [
   { path: "custom/:id", 
@@ -69,6 +70,7 @@ const CUSTOM_ROUTES: Routes = [
     DitestModule,
     RsJSModule,
     FunctionModule,
+    BrowserTestModule
   ],
   
   providers: [{ provide: JerrySandBoxService },

@@ -1,36 +1,48 @@
+import 'reflect-metadata';
+
 import {
   Component
 } from "@angular/core";
 import { Router, ActivationStart } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
-function immutable(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
-  const original = descriptor.set;
-
-  descriptor.set = function (value: any) {
-    return original.call(this, { ...value })
-  }
+// Each mixin is a traditional ES class
+class Jumpable {
+  jump() {}
 }
 
-class C {
-  private _point = { x: 0, y: 0 }
-
-  @immutable
-  set point(value: { x: number, y: number }) {
-    this._point = value;
-  }
-
-  get point() {
-    return this._point;
-  }
+class Duckable {
+  duck() {}
 }
 
-const c = new C();
-const point = { x: 1, y: 1 }
-c.point = point;
+// Including the base
+class Sprite {
+  x = 0;
+  y = 0;
+}
 
-console.log(c.point === point)
+// Then you create an interface which merges
+// the expected mixins with the same name as your base
+interface Sprite extends Jumpable, Duckable {}
+// Apply the mixins into the base class via
+// the JS at runtime
+applyMixins(Sprite, [Jumpable, Duckable]);
 
+// This can live anywhere in your codebase:
+function applyMixins(derivedCtor: any, constructors: any[]) {
+  constructors.forEach((baseCtor) => {
+    Object.getOwnPropertyNames(baseCtor.prototype).forEach((name) => {
+      Object.defineProperty(
+        derivedCtor.prototype,
+        name,
+        Object.getOwnPropertyDescriptor(baseCtor.prototype, name) ||
+          Object.create(null)
+      );
+    });
+  });
+}
+
+// ================================
 @Component({
   selector: "app-root",
   templateUrl: './app.component.html'

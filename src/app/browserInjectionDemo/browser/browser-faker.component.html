@@ -1,0 +1,14 @@
+<label>
+  Fake a browser
+
+  <select [formControl]="selectedBrowser">
+    <option value="">
+      My browser
+    </option>
+
+    <option *ngFor="let browser of browsers"
+      [value]="browser">
+      {{browser | replace:wordStartPattern:' $&' | trim}}
+    </option>
+  </select>
+</label>

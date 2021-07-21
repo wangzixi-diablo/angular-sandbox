@@ -1,0 +1,8 @@
+<aside *ngIf="isBannerVisible$ | async">
+  Sorry, we will not continue to support Internet Explorer 11.<br />
+  Please upgrade to Microsoft Edge.<br />
+
+  <button (click)="onDismiss()">
+    Dismiss
+  </button>
+</aside>
