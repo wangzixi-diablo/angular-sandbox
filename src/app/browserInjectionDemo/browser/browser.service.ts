@@ -15,6 +15,7 @@ export class BrowserService implements OnDestroy {
     distinctUntilChanged(),
   );
 
+  // get real value from Injection Token 
   constructor(
     @Inject(userAgentToken) private realUserAgent: string,
   ) {}
