@@ -9,6 +9,9 @@ export class ReplacePipe implements PipeTransform {
     searchValue: string | RegExp,
     replaceValue: string,
   ): string {
-    return value.replace(searchValue, replaceValue);
+    const result = value.replace(searchValue, replaceValue);
+    console.log(`Jerry own pipe, original value: ${value},
+    search value: ${searchValue}, replaceValue: ${replaceValue}, result: ${result}`);
+    return result;
   }
 }
