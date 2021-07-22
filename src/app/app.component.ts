@@ -50,11 +50,12 @@ function applyMixins(derivedCtor: any, constructors: any[]) {
 export class AppComponent {
   public jerry = '1';
 
-  constructor(router:Router){
+  constructor(/*router:Router*/){
+    /*
     router.events.pipe(
       filter(e => e instanceof ActivationStart)
     ).subscribe(e =>{
         console.log('路由开始了', e);
-    });
+    });*/
   }
 }
