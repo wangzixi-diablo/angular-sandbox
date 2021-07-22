@@ -6,6 +6,7 @@ import { TextModule } from '../text';
 import { BrowserFakerComponent } from './browser-faker.component';
 import { UrlComponent } from './url.component';
 import { HighlightDirectiveModule } from '../highLightDirective/highlight.module';
+import { UnlessDirectiveModule } from 'src/app/unless/unlessDirective.module';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HighlightDirectiveModule } from '../highLightDirective/highlight.module
     SharedModule,
     ReactiveFormsModule,
     TextModule,
-    HighlightDirectiveModule
+    HighlightDirectiveModule,
+    UnlessDirectiveModule
   ],
 })
 export class BrowserWidgetModule {}

@@ -10,14 +10,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from './app.effect';
-import { UnlessDirective } from '../unless/unless.directive';
 import { HERO_DI_CONFIG, APP_CONFIG } from './app.config';
 
 import { HttpErrorHandler, UnKnownHandler, BadGatewayHandler } from './ngrxdemo/service/unittest-study/abstract-test';
 
 import { ParentModule } from 'src/parent-child/parent.module';
-import { ParentChildComponent } from 'src/parent-child/parent-child.component';
-import { RouteStudyModule } from './route-study/route-study.module';
 import { RouterModule, Routes } from '@angular/router';
 import { RouteDemoComponent } from './route-study/route-demo/route-demo.component';
 import { CanActivateTeam, UserToken, JerryPermissions } from './route-study/route-demo/activate-guard';
@@ -26,9 +23,7 @@ import { WildComponent } from './route-study/route-demo/wild.component';
 import { ColorModule } from './color/color.module';
 import { JerryReactFormModule } from './react-form/react-form.module';
 import { DitestModule } from './ditest/ditest.module';
-import { CombineLatestComponent } from './rxjs/combine-latest/combine-latest.component';
 import { RsJSModule } from './rxjs/rxjs.module';
-import { SwitchMapComponent } from './rxjs/switchMap/switchMap.component';
 import { FunctionModule } from './function/function.module';
 import { BrowserTestModule } from './browserInjectionDemo/browserTest.module';
 
@@ -50,8 +45,7 @@ const CUSTOM_ROUTES: Routes = [
 
 @NgModule({
   declarations: [
-    AppComponent,
-    UnlessDirective
+    AppComponent
   ],
   imports: [
     BrowserModule,
