@@ -21,6 +21,7 @@ export class BrowserFakerComponent implements OnDestroy, OnInit {
   fakeBrowsers = Object.keys(FakeUserAgent);
   selectedBrowser = new FormControl(this.defaultOptionValue);
   wordStartPattern = /[A-Z]|\d+/g;
+  myHighlightColor = 'blue';
 
   constructor(
     private browser: BrowserService,
