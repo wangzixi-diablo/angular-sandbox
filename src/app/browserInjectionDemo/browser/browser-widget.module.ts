@@ -5,6 +5,7 @@ import { SharedModule } from '../shared';
 import { TextModule } from '../text';
 import { BrowserFakerComponent } from './browser-faker.component';
 import { UrlComponent } from './url.component';
+import { HighlightDirectiveModule } from '../highLightDirective/highlight.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { UrlComponent } from './url.component';
     SharedModule,
     ReactiveFormsModule,
     TextModule,
+    HighlightDirectiveModule
   ],
 })
 export class BrowserWidgetModule {}

@@ -8,10 +8,12 @@ import { locationToken } from './location.token';
 })
 export class UrlComponent {
   get url() {
-    return this.location.href;
+    console.log("jerry: ", location.href);
+    console.log('equal? ', location === this._InjectedLocation);
+    return this._InjectedLocation.href;
   }
 
   constructor(
-    @Inject(locationToken) private location: Location,
+    @Inject(locationToken) private _InjectedLocation: Location,
   ) {}
 }

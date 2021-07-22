@@ -6,3 +6,7 @@
     Dismiss
   </button>
 </aside>
+
+<ng-template [ngIf]="!(isBannerVisible$ | async)">
+  <div class="name">{{ this.isBannerVisible$ | async }}</div>
+</ng-template>

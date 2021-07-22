@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserTestComponent } from './browserTest.component';
-import { BrowserWidgetModule } from './browser';
+import { BrowserWidgetModule } from './browser/Jerryindex';
 import { InternetExplorerModule } from './internet-explorer';
 import { SharedModule } from './shared';
 import { Routes, RouterModule } from '@angular/router';
