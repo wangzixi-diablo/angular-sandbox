@@ -1,5 +1,9 @@
 # Jerry's Sandbox
 
+## remote url
+
+https://github.com/wangzixi-diablo/angular-sandbox
+
 ## Entry point 
 
 Check main.js, there is one line for root module definition:

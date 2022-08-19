@@ -5,6 +5,7 @@ import {
 } from "@angular/core";
 import { Router, ActivationStart } from '@angular/router';
 import { filter } from 'rxjs/operators';
+import { interval } from 'rxjs';
 
 // Each mixin is a traditional ES class
 class Jumpable {
@@ -50,12 +51,10 @@ function applyMixins(derivedCtor: any, constructors: any[]) {
 export class AppComponent {
   public jerry = '1';
 
-  constructor(/*router:Router*/){
-    /*
-    router.events.pipe(
-      filter(e => e instanceof ActivationStart)
-    ).subscribe(e =>{
-        console.log('路由开始了', e);
-    });*/
+  constructor(){
+    const intervalTest = interval(1000);
+
+    intervalTest.subscribe((data)=>
+      console.log('jerry data: ', data));
   }
 }
